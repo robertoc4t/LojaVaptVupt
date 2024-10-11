@@ -9,7 +9,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import Util.ArquivoProdutos;
 
-public class KatchauGUI extends JFrame {
+public class VaptVuptGUI extends JFrame {
     private JList<String> listProdutos;
     private CarrinhoDeCompras carrinho;
     private JTextArea textAreaDescricao;
@@ -17,7 +17,7 @@ public class KatchauGUI extends JFrame {
     private List<Produto> todosProdutos;
     private List<String> produtosExibidos;
 
-    public KatchauGUI() {
+    public VaptVuptGUI() {
         carrinho = new CarrinhoDeCompras();
         todosProdutos = ArquivoProdutos.carregarDados("src/main/resources/produtos.txt");
         produtosExibidos = todosProdutos.stream()
@@ -30,7 +30,6 @@ public class KatchauGUI extends JFrame {
         setSize(600, 500);
         setLocationRelativeTo(null);
         setLayout(new BorderLayout());
-        setBackground(Color.CYAN);
         setVisible(true);
 
 
@@ -56,6 +55,8 @@ public class KatchauGUI extends JFrame {
         JPanel painelSuperior = new JPanel(new BorderLayout());
         JPanel painelInferior = new JPanel(new FlowLayout());
 
+
+
         // Adicionando componentes aos painéis
         painelSuperior.add(new JScrollPane(listProdutos), BorderLayout.CENTER);
         painelSuperior.add(btnAdicionar, BorderLayout.SOUTH);
@@ -63,6 +64,8 @@ public class KatchauGUI extends JFrame {
         painelSuperior.add(comboBoxFiltro, BorderLayout.EAST);
         painelInferior.add(btnCalcularTotal);
         painelInferior.add(btnVerCarrinho);
+
+
 
         // Adicionando painéis à janela
         add(painelSuperior, BorderLayout.NORTH);
@@ -97,6 +100,8 @@ public class KatchauGUI extends JFrame {
         pack();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
+
+
     }
 
     // Método para adicionar um produto ao carrinho
