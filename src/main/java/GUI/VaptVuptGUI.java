@@ -4,6 +4,8 @@ import Entities.CarrinhoDeCompras;
 import Entities.Produto;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -32,15 +34,17 @@ public class VaptVuptGUI extends JFrame {
         setLayout(new BorderLayout());
         setVisible(true);
 
-
         // Componentes
         listProdutos = new JList<>(produtosExibidos.toArray(new String[0]));
         JButton btnAdicionar = new JButton("Adicionar ao carrinho");
         JButton btnRemover = new JButton("Remover do carrinho");
         JButton btnCalcularTotal = new JButton("Finalizar compra");
         JButton btnVerCarrinho = new JButton("Ver Carrinho");
+        JButton btnModoAdm= new JButton("Modo ADM");
         textAreaDescricao = new JTextArea();
         textAreaDescricao.setEditable(false);
+
+        ImageIcon imagenIcon = new ImageIcon("src/main/resources/imagen.png");
 
         // Inicialização do JComboBox
         comboBoxFiltro = new JComboBox<>();
@@ -64,6 +68,7 @@ public class VaptVuptGUI extends JFrame {
         painelSuperior.add(comboBoxFiltro, BorderLayout.EAST);
         painelInferior.add(btnCalcularTotal);
         painelInferior.add(btnVerCarrinho);
+        painelInferior.add(btnModoAdm);
 
 
 
@@ -92,6 +97,17 @@ public class VaptVuptGUI extends JFrame {
 
         // Ação da seleção de um produto na lista
         listProdutos.addListSelectionListener(e -> exibirDescricaoProduto());
+
+        // Carregar ADMGUI
+        btnModoAdm.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // Chama a nova janela (classe NovaJanela)
+                VaptVuptGUIAdmin adm = new VaptVuptGUIAdmin();
+                setVisible(false); // Torna a nova janela visível
+            }
+        });
+
 
         // Atualizar a descrição do primeiro produto
         exibirDescricaoProduto();
@@ -187,5 +203,8 @@ public class VaptVuptGUI extends JFrame {
         }
     }
 
+    private void carregarADMGUI(){
+        setVisible(false);
+    }
 
 }

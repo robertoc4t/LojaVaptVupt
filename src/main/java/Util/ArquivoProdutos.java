@@ -39,4 +39,14 @@ public class ArquivoProdutos {
             e.printStackTrace();
         }
     }
+
+
+    public static void removerProduto(String arquivo, String nomeProduto) {
+        List<Produto> produtos = carregarDados(arquivo);
+
+        produtos.removeIf(produto -> produto.getNome().equalsIgnoreCase(nomeProduto));
+
+        salvarDados(arquivo, produtos);
+    }
+
 }
