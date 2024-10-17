@@ -1,6 +1,7 @@
 package Util;
 
 import Entities.Produto;
+import Exceptions.ProdutoNaoAchadoException;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -40,13 +41,14 @@ public class ArquivoProdutos {
         }
     }
 
-
-    public static void removerProduto(String arquivo, String nomeProduto) {
-        List<Produto> produtos = carregarDados(arquivo);
-
-        produtos.removeIf(produto -> produto.getNome().equalsIgnoreCase(nomeProduto));
-
-        salvarDados(arquivo, produtos);
+    public Produto buscarProdutoPorDescricao(String descricao) throws ProdutoNaoAchadoException {
+        for(Produto p : carregarDados(descricao)) {
+            if(p.getDescricao().equals(descricao)) {
+                return p;
+            }
+        }
+        throw new ProdutoNaoAchadoException("O produto com descricao " + descricao+ " não foi encontrado");
     }
+
 
 }
