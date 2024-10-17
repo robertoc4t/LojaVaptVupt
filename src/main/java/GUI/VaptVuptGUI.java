@@ -104,7 +104,7 @@ public class VaptVuptGUI extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 // Chama a nova janela (classe NovaJanela)
                 VaptVuptGUIAdmin adm = new VaptVuptGUIAdmin();
-                setVisible(false); // Torna a nova janela visível
+                dispose();
             }
         });
 
@@ -113,7 +113,6 @@ public class VaptVuptGUI extends JFrame {
         exibirDescricaoProduto();
 
         // Aplicação da responsividade
-        pack();
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
 
