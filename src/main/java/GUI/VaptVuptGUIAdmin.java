@@ -1,10 +1,12 @@
 package GUI;
 import Entities.Produto;
+import Util.ArquivoProdutos;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 
 import static java.lang.Double.parseDouble;
 
@@ -82,8 +84,10 @@ public class VaptVuptGUIAdmin extends JFrame {
                 String descricaoTexto = descricao.getText();
                 Produto produto = new Produto(categoriaTexto, nomeTexto, precoTexto, descricaoTexto);
 
-
-
+                String localArquivo = "src/main/resources/produtos.txt";
+                List<Produto> listaProdutos = ArquivoProdutos.carregarDados(localArquivo);
+                listaProdutos.add(produto);
+                ArquivoProdutos.salvarDados(localArquivo, listaProdutos);
 
                 JOptionPane.showMessageDialog(null, "Produto cadastrado:\nCategoria: " + categoriaTexto
                         + "\nNome: " + nomeTexto + "\nPreço: " + precoTexto + "\nDescrição: " + descricaoTexto);
