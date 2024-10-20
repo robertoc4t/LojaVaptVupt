@@ -166,7 +166,7 @@ public class VaptVuptGUI extends JFrame {
             if (produtoParaRemover != null) {
                 // Remove o produto do carrinho
                 carrinho.removerProduto(produtoParaRemover);
-                JOptionPane.showMessageDialog(this, "Produto removido do carrinho com sucesso!");
+                JOptionPane.showMessageDialog(this, "Produto removido do sistema com sucesso!");
             }
         }
     }
