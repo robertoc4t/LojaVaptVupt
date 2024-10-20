@@ -18,7 +18,11 @@ public class CarrinhoDeCompras {
     public void removerProduto(Produto produto) {
         int quantidade = carrinho.getOrDefault(produto, 0);
         if (quantidade > 0) {
-            carrinho.put(produto, quantidade - 1);
+            if (quantidade == 1) {
+                carrinho.remove(produto); // Remove o produto completamente se a quantidade for 1
+            } else {
+                carrinho.put(produto, quantidade - 1); // Decrementa a quantidade
+            }
         }
     }
 

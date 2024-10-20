@@ -81,7 +81,7 @@ public class VaptVuptGUI extends JFrame {
         btnAdicionar.addActionListener(e -> adicionarProdutoAoCarrinho());
 
         // Ação do botão Remover Produto
-        btnRemover.addActionListener(e -> removerProdutoDoCarrinho());
+        btnRemover.addActionListener(e -> removerProdutoDoCarrinhoGUI());
 
         // Ação do botão Calcular Valor Total
         btnCalcularTotal.addActionListener(e -> calcularValorTotal());
@@ -132,14 +132,42 @@ public class VaptVuptGUI extends JFrame {
     }
 
     // Método para remover um produto do carrinho
-    private void removerProdutoDoCarrinho() {
-        int index = listProdutos.getSelectedIndex();
-        if (index != -1) {
-            Produto produtoSelecionado = todosProdutos.get(index);
-            carrinho.removerProduto(produtoSelecionado);
-            JOptionPane.showMessageDialog(this, "Produto removido do carrinho com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Selecione um produto da lista para remover do carrinho!");
+    private void removerProdutoDoCarrinhoGUI() {
+        // Obtenha os produtos do carrinho
+        Map<Produto, Integer> itensCarrinho = carrinho.getCarrinho();
+
+        if (itensCarrinho.isEmpty()) {
+            JOptionPane.showMessageDialog(this, "O carrinho está vazio!");
+            return;
+        }
+
+        // Cria uma lista dos produtos no carrinho com suas quantidades
+        String[] produtosCarrinho = itensCarrinho.entrySet().stream()
+                .map(entry -> entry.getKey().getNome() + " - Quantidade: " + entry.getValue())
+                .toArray(String[]::new);
+
+        // Exibe uma janela para o usuário selecionar qual produto remover
+        String produtoSelecionado = (String) JOptionPane.showInputDialog(
+                this,
+                "Selecione o produto que deseja remover:",
+                "Remover Produto do Carrinho",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                produtosCarrinho,
+                produtosCarrinho[0]);
+
+        // Verifica se o usuário selecionou um produto
+        if (produtoSelecionado != null) {
+            // Obtém o produto selecionado a partir do nome
+            Produto produtoParaRemover = itensCarrinho.keySet().stream()
+                    .filter(produto -> produtoSelecionado.startsWith(produto.getNome()))
+                    .findFirst().orElse(null);
+
+            if (produtoParaRemover != null) {
+                // Remove o produto do carrinho
+                carrinho.removerProduto(produtoParaRemover);
+                JOptionPane.showMessageDialog(this, "Produto removido do carrinho com sucesso!");
+            }
         }
     }
 
