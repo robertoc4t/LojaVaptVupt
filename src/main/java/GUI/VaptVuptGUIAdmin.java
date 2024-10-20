@@ -11,6 +11,9 @@ import java.util.List;
 import static java.lang.Double.parseDouble;
 
 public class VaptVuptGUIAdmin extends JFrame {
+
+    public static final String LOCAL_ARQUIVO = "src/main/resources/produtos.txt";
+
     public VaptVuptGUIAdmin() {
         // Configuração da janela
         setTitle("Admin");
@@ -45,6 +48,8 @@ public class VaptVuptGUIAdmin extends JFrame {
         JButton btnUser = new JButton("Modo User");
         JButton btnCadastrar = new JButton("Cadastrar Produto");
 
+        JButton btnRemoverModal = new JButton("Remover Produto");
+
         // Adicionando os componentes ao painel
         painelSuperior.add(labelCategoria);
         painelSuperior.add(categoria);
@@ -60,6 +65,8 @@ public class VaptVuptGUIAdmin extends JFrame {
 
         painelSuperior.add(btnCadastrar);
         painelInferior.add(btnUser);
+
+        painelSuperior.add(btnRemoverModal);
 
         // Adicionando o painel ao JFrame
         add(painelSuperior, BorderLayout.NORTH);
@@ -84,10 +91,10 @@ public class VaptVuptGUIAdmin extends JFrame {
                 String descricaoTexto = descricao.getText();
                 Produto produto = new Produto(categoriaTexto, nomeTexto, precoTexto, descricaoTexto);
 
-                String localArquivo = "src/main/resources/produtos.txt";
-                List<Produto> listaProdutos = ArquivoProdutos.carregarDados(localArquivo);
+                
+                List<Produto> listaProdutos = ArquivoProdutos.carregarDados(LOCAL_ARQUIVO);
                 listaProdutos.add(produto);
-                ArquivoProdutos.salvarDados(localArquivo, listaProdutos);
+                ArquivoProdutos.salvarDados(LOCAL_ARQUIVO, listaProdutos);
 
                 JOptionPane.showMessageDialog(null, "Produto cadastrado:\nCategoria: " + categoriaTexto
                         + "\nNome: " + nomeTexto + "\nPreço: " + precoTexto + "\nDescrição: " + descricaoTexto);
@@ -96,8 +103,46 @@ public class VaptVuptGUIAdmin extends JFrame {
             }
         });
 
+        btnRemoverModal.addActionListener(e -> removerProdutoDoCadastroModal());
+
         // Tornando a janela visível após adicionar todos os componentes
         setVisible(true);
+    }
+
+    private void removerProdutoDoCadastroModal(){
+
+        List<Produto> produtosCadastrados = ArquivoProdutos.carregarDados(LOCAL_ARQUIVO);
+
+        if(produtosCadastrados.size() > 0){
+
+            String[] listaProdutosCadastrados = produtosCadastrados.stream().map(produto -> produto.getNome() + " - R$ " + produto.getPreco()).toArray(String[]::new);
+
+            String produtoSelecionado = (String) JOptionPane.showInputDialog(
+                this,
+                "Selecione o produto que deseja remover:",
+                "Remover Produto do Cadastro",
+                JOptionPane.PLAIN_MESSAGE,
+                null,
+                listaProdutosCadastrados,
+                listaProdutosCadastrados[0]
+            );
+
+            if (produtoSelecionado != null) {
+                // Obtém o produto selecionado a partir do nome
+                Produto produtoParaRemover = produtosCadastrados.stream()
+                        .filter(produto -> produtoSelecionado.startsWith(produto.getNome()))
+                        .findFirst().orElse(null);
+    
+                if (produtoParaRemover != null) {
+                    // Remove o produto do carrinho
+                    produtosCadastrados.remove(produtoParaRemover);
+                    ArquivoProdutos.salvarDados(LOCAL_ARQUIVO, produtosCadastrados);
+                    JOptionPane.showMessageDialog(this, "Produto removido do cadastro com sucesso!");
+                }
+            }
+
+        }
+            
     }
 
     public static void main(String[] args) {
