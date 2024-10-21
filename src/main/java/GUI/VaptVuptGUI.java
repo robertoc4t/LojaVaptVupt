@@ -12,12 +12,12 @@ import java.util.stream.Collectors;
 import Util.ArquivoProdutos;
 
 public class VaptVuptGUI extends JFrame {
-    private JList<String> listProdutos;
-    private CarrinhoDeCompras carrinho;
-    private JTextArea textAreaDescricao;
-    private JComboBox<String> comboBoxFiltro;
-    private List<Produto> todosProdutos;
-    private List<String> produtosExibidos;
+    public JList<String> listProdutos;
+    public CarrinhoDeCompras carrinho;
+    public  JTextArea textAreaDescricao;
+    public  JComboBox<String> comboBoxFiltro;
+    public  List<Produto> todosProdutos;
+    public  List<String> produtosExibidos;
 
     public VaptVuptGUI() {
         carrinho = new CarrinhoDeCompras();
@@ -120,7 +120,7 @@ public class VaptVuptGUI extends JFrame {
     }
 
     // Método para adicionar um produto ao carrinho
-    private void adicionarProdutoAoCarrinho() {
+    public void adicionarProdutoAoCarrinho() {
         int index = listProdutos.getSelectedIndex();
         if (index != -1) {
             Produto produtoSelecionado = todosProdutos.get(index);
@@ -132,7 +132,7 @@ public class VaptVuptGUI extends JFrame {
     }
 
     // Método para remover um produto do carrinho
-    private void removerProdutoDoCarrinhoGUI() {
+    public void removerProdutoDoCarrinhoGUI() {
         // Obtenha os produtos do carrinho
         Map<Produto, Integer> itensCarrinho = carrinho.getCarrinho();
 
@@ -204,7 +204,7 @@ public class VaptVuptGUI extends JFrame {
     }
 
     // Método para filtrar os produtos exibidos na lista de acordo com o filtro selecionado
-    private void filtrarProdutos() {
+    public List<Produto> filtrarProdutos() {
         String filtro = (String) comboBoxFiltro.getSelectedItem();
         if (filtro.equals("Todos")) {
             produtosExibidos = todosProdutos.stream()
@@ -217,6 +217,7 @@ public class VaptVuptGUI extends JFrame {
                     .collect(Collectors.toList());
         }
         listProdutos.setListData(produtosExibidos.toArray(new String[0]));
+        return null;
     }
 
     // Método para exibir a descrição do produto selecionado
@@ -233,5 +234,6 @@ public class VaptVuptGUI extends JFrame {
     private void carregarADMGUI(){
         setVisible(false);
     }
+
 
 }

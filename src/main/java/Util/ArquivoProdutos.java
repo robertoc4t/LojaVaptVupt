@@ -19,7 +19,7 @@ public class ArquivoProdutos {
                     String nome = dados[1];
                     double preco = Double.parseDouble(dados[2]);
                     String descricao = dados[3];
-                    Produto produto = new Produto(categoria, nome, preco, descricao);
+                    Produto produto = new Produto(categoria, nome, preco);
                     produtos.add(produto);
                 }
             }

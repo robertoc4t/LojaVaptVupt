@@ -6,12 +6,13 @@ public class Produto implements ItemCarrinho {
     private double preco;
     private String descricao;
 
-    public Produto(String categoria, String nome, double preco, String descricao) {
+    public Produto(String categoria, String nome, double preco) {
         this.categoria = categoria;
         this.nome = nome;
         this.preco = preco;
         this.descricao = descricao;
     }
+
 
     public String getCategoria() {
         return categoria;

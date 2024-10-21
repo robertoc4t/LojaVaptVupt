@@ -11,3 +11,4 @@ TV;LG OLED TV 4K serie C1;54749.0;resolução de 120 Hz suporte a GSync FreeSync
 TV;Smart TV 55 4K OLED Samsung;6649.0;144Hz de frequência borda infinita em todos os 4 lados
 Smartphone;Google Pixel 7 Pro;5799.0;O Google Pixel 7 Pro é um smartphone Android com características inovadoras
 Notebook; notebook GAMER AVELL STORM TWO;14599.0; RTX 3070Ti i712700H 32GB RAM com suporte para até 64GB de RAM DDR5 com Dual Channel
+Celular;Guitarrinha;100.0;Celular veio que tem lanterna

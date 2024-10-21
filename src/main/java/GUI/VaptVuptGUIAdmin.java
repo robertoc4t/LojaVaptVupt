@@ -13,6 +13,7 @@ import static java.lang.Double.parseDouble;
 public class VaptVuptGUIAdmin extends JFrame {
 
     public static final String LOCAL_ARQUIVO = "src/main/resources/produtos.txt";
+    public AbstractButton btnCadastrar;
 
     public VaptVuptGUIAdmin() {
         // Configuração da janela
@@ -89,7 +90,7 @@ public class VaptVuptGUIAdmin extends JFrame {
                 String nomeTexto = nome.getText();
                 double precoTexto = parseDouble(preco.getText());
                 String descricaoTexto = descricao.getText();
-                Produto produto = new Produto(categoriaTexto, nomeTexto, precoTexto, descricaoTexto);
+                Produto produto = new Produto(categoriaTexto, nomeTexto, precoTexto);
 
                 
                 List<Produto> listaProdutos = ArquivoProdutos.carregarDados(LOCAL_ARQUIVO);
