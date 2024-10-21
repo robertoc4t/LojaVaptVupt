@@ -1,14 +1,14 @@
-Smartphone;Samsung Galaxy S23 Ultra;6199.0;O Samsung Galaxy S23 Ultra é um smartphone Android com características inovadoras
-Computador;PC Pichau Highflyer;35299.0; AMD Ryzen 9 7950X3D SSD Corsair MP600 PRO 2TB Placa de Video Zotac GeForce RTX 4090 Placa Mae Gigabyte X670 Aorus Elite AX
-Console;Xbox Series X;4649.0;Desfrute de jogos 4K a até 120 quadros por segundo som 3D avançado especial
-Notebook; notebook Gamer Gigabyte Aorus 15;13199.0; i7 12700H de 12 geração GeForce RTX 3070 Ti Laptop GPU 8 GB GDDR6 1TB SSD NVME 32 RAM Tela LCD antirreflexo de nivel IPS de 15
-Console; Playstation 5;3799.0;venha se maravilhar com graficos incriveis e experimente os recursos do novo PS5 como o Ray Tracing
-Computador;Computador Pichau Gamer Cougar;2939.0;Processador AMD Ryzen 5 5600G Placa Mae Pichau Danuri B550M 8GB RAM SSD 240GB
-Smartphone;Motorola Edge 30 Pro;3299.0;O Motorola Edge 30 Pro é sem dúvida um dos smartphones Android mais avançados e abrangentes disponíveis no mercado
-Smartphone;Apple iPhone 14 Pro Max;7274.0;O Apple iPhone 14 Pro Max é um smartphone iOS com características inovadoras
-TV;LG OLED 77 Polegadas;2940.0;Smart TV LG 77 Polegadas OLED 4K Bluetooth  Wi-Fi 3 USB HDR 120Hz Gsync Freesync Inteligencia Artificial ThinQ Google Alexa
-TV;LG OLED TV 4K serie C1;54749.0;resolução de 120 Hz suporte a GSync FreeSync e VRR e o combo do Dolby Vision e Dolby Atmos com filmes e jogos
-TV;Smart TV 55 4K OLED Samsung;6649.0;144Hz de frequência borda infinita em todos os 4 lados
-Smartphone;Google Pixel 7 Pro;5799.0;O Google Pixel 7 Pro é um smartphone Android com características inovadoras
-Notebook; notebook GAMER AVELL STORM TWO;14599.0; RTX 3070Ti i712700H 32GB RAM com suporte para até 64GB de RAM DDR5 com Dual Channel
-Celular;Guitarrinha;100.0;Celular veio que tem lanterna
+Smartphone;Samsung Galaxy S23 Ultra;6199.0;null
+Computador;PC Pichau Highflyer;35299.0;null
+Console;Xbox Series X;4649.0;null
+Notebook; notebook Gamer Gigabyte Aorus 15;13199.0;null
+Console; Playstation 5;3799.0;null
+Computador;Computador Pichau Gamer Cougar;2939.0;null
+Smartphone;Motorola Edge 30 Pro;3299.0;null
+Smartphone;Apple iPhone 14 Pro Max;7274.0;null
+TV;LG OLED 77 Polegadas;2940.0;null
+TV;LG OLED TV 4K serie C1;54749.0;null
+TV;Smart TV 55 4K OLED Samsung;6649.0;null
+Smartphone;Google Pixel 7 Pro;5799.0;null
+Notebook; notebook GAMER AVELL STORM TWO;14599.0;null
+Celular;Guitarrinha;100.0;null
