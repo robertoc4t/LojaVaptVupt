@@ -12,3 +12,4 @@ TV;Smart TV 55 4K OLED Samsung;6649.0;null
 Smartphone;Google Pixel 7 Pro;5799.0;null
 Notebook; notebook GAMER AVELL STORM TWO;14599.0;null
 Celular;Guitarrinha;100.0;null
+Smartphone;Moto G32;1299.0;null
