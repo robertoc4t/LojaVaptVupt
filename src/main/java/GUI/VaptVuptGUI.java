@@ -26,7 +26,6 @@ public class VaptVuptGUI extends JFrame {
                 .map(produto -> produto.getNome() + " - R$ " + String.format("%.2f", produto.getPreco()))
                 .collect(Collectors.toList());
 
-        // Configurações da janela
         setTitle("Katchau! - Loja de Eletrônicos");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setSize(600, 500);
@@ -34,7 +33,6 @@ public class VaptVuptGUI extends JFrame {
         setLayout(new BorderLayout());
         setVisible(true);
 
-        // Componentes
         listProdutos = new JList<>(produtosExibidos.toArray(new String[0]));
         JButton btnAdicionar = new JButton("Adicionar ao carrinho");
         JButton btnRemover = new JButton("Remover do carrinho");
@@ -46,7 +44,6 @@ public class VaptVuptGUI extends JFrame {
 
         ImageIcon imagenIcon = new ImageIcon("src/main/resources/imagen.png");
 
-        // Inicialização do JComboBox
         comboBoxFiltro = new JComboBox<>();
         comboBoxFiltro.addItem("Todos");
         comboBoxFiltro.addItem("Smartphone");
@@ -55,13 +52,9 @@ public class VaptVuptGUI extends JFrame {
         comboBoxFiltro.addItem("Console");
         comboBoxFiltro.addItem("Notebook");
 
-        // Painéis
         JPanel painelSuperior = new JPanel(new BorderLayout());
         JPanel painelInferior = new JPanel(new FlowLayout());
 
-
-
-        // Adicionando componentes aos painéis
         painelSuperior.add(new JScrollPane(listProdutos), BorderLayout.CENTER);
         painelSuperior.add(btnAdicionar, BorderLayout.SOUTH);
         painelSuperior.add(btnRemover, BorderLayout.NORTH);
@@ -70,35 +63,24 @@ public class VaptVuptGUI extends JFrame {
         painelInferior.add(btnVerCarrinho);
         painelInferior.add(btnModoAdm);
 
-
-
-        // Adicionando painéis à janela
         add(painelSuperior, BorderLayout.NORTH);
         add(textAreaDescricao, BorderLayout.CENTER);
         add(painelInferior, BorderLayout.SOUTH);
 
-        // Ação do botão Adicionar Produto
         btnAdicionar.addActionListener(e -> adicionarProdutoAoCarrinho());
 
-        // Ação do botão Remover Produto
         btnRemover.addActionListener(e -> removerProdutoDoCarrinhoGUI());
 
-        // Ação do botão Calcular Valor Total
         btnCalcularTotal.addActionListener(e -> calcularValorTotal());
 
-        // Ação do botão Ver Carrinho
         btnVerCarrinho.addActionListener(e -> exibirCarrinho());
 
-        // Ação da seleção do filtro
         comboBoxFiltro.addActionListener(e -> filtrarProdutos());
 
-        // Selecionar o primeiro produto da lista
         listProdutos.setSelectedIndex(0);
 
-        // Ação da seleção de um produto na lista
         listProdutos.addListSelectionListener(e -> exibirDescricaoProduto());
 
-        // Carregar ADMGUI
         btnModoAdm.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -108,18 +90,14 @@ public class VaptVuptGUI extends JFrame {
             }
         });
 
-
-        // Atualizar a descrição do primeiro produto
         exibirDescricaoProduto();
 
-        // Aplicação da responsividade
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         setVisible(true);
 
 
     }
 
-    // Método para adicionar um produto ao carrinho
     public void adicionarProdutoAoCarrinho() {
         int index = listProdutos.getSelectedIndex();
         if (index != -1) {
@@ -131,9 +109,7 @@ public class VaptVuptGUI extends JFrame {
         }
     }
 
-    // Método para remover um produto do carrinho
     public void removerProdutoDoCarrinhoGUI() {
-        // Obtenha os produtos do carrinho
         Map<Produto, Integer> itensCarrinho = carrinho.getCarrinho();
 
         if (itensCarrinho.isEmpty()) {
@@ -141,12 +117,9 @@ public class VaptVuptGUI extends JFrame {
             return;
         }
 
-        // Cria uma lista dos produtos no carrinho com suas quantidades
         String[] produtosCarrinho = itensCarrinho.entrySet().stream()
                 .map(entry -> entry.getKey().getNome() + " - Quantidade: " + entry.getValue())
                 .toArray(String[]::new);
-
-        // Exibe uma janela para o usuário selecionar qual produto remover
         String produtoSelecionado = (String) JOptionPane.showInputDialog(
                 this,
                 "Selecione o produto que deseja remover:",
@@ -156,27 +129,20 @@ public class VaptVuptGUI extends JFrame {
                 produtosCarrinho,
                 produtosCarrinho[0]);
 
-        // Verifica se o usuário selecionou um produto
         if (produtoSelecionado != null) {
-            // Obtém o produto selecionado a partir do nome
             Produto produtoParaRemover = itensCarrinho.keySet().stream()
                     .filter(produto -> produtoSelecionado.startsWith(produto.getNome()))
                     .findFirst().orElse(null);
 
             if (produtoParaRemover != null) {
-                // Remove o produto do carrinho
                 carrinho.removerProduto(produtoParaRemover);
                 JOptionPane.showMessageDialog(this, "Produto removido do sistema com sucesso!");
             }
         }
     }
-
-    // Método para calcular o valor total da compra
     private void calcularValorTotal() {
         double valorTotal = carrinho.calcularValorTotal();
         JOptionPane.showMessageDialog(this, "Valor total da compra: R$ " + String.format("%.2f", valorTotal));
-
-        // Exibir a nota fiscal
         StringBuilder notaFiscal = new StringBuilder("Nota Fiscal:\n\n");
         Map<Produto, Integer> itensCarrinho = carrinho.getCarrinho();
         for (Map.Entry<Produto, Integer> entry : itensCarrinho.entrySet()) {
@@ -190,7 +156,6 @@ public class VaptVuptGUI extends JFrame {
         JOptionPane.showMessageDialog(this, "Muito obrigado por comprar com a Katchau!");
     }
 
-    // Método para exibir o carrinho de compras
     private void exibirCarrinho() {
         Map<Produto, Integer> itensCarrinho = carrinho.getCarrinho();
         StringBuilder carrinhoTexto = new StringBuilder("Carrinho de Compras:\n\n");
@@ -203,7 +168,6 @@ public class VaptVuptGUI extends JFrame {
         JOptionPane.showMessageDialog(this, carrinhoTexto.toString());
     }
 
-    // Método para filtrar os produtos exibidos na lista de acordo com o filtro selecionado
     public List<Produto> filtrarProdutos() {
         String filtro = (String) comboBoxFiltro.getSelectedItem();
         if (filtro.equals("Todos")) {
@@ -220,7 +184,6 @@ public class VaptVuptGUI extends JFrame {
         return null;
     }
 
-    // Método para exibir a descrição do produto selecionado
     private void exibirDescricaoProduto() {
         int index = listProdutos.getSelectedIndex();
         if (index != -1) {
