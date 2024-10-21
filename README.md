@@ -7,21 +7,18 @@
 
 Curso: Licenciatura em Ciências da Computação – LCC
 
-Curso: Bacharelado em Sistemas de Informação - BSI
 
-Componente Curricular: Engenharia de Software – 8103151
+Componente Curricular: PROGRAMACAO ORIENTADA A OBJETOS – 8103138
 
-Prof.: Luiz Sérgio Plácido da Silva
+Prof.: Ayla Debora Danta de Souza Reboucas
 #
 Alunos:
 
-Mateus Neres Da Silva
+José Roberto da Silva Henrique
 
-Valeria Joyse Santos Nunes
+Alessandro Pereira Marcelino da Silva
 
-John Wesley Da Silva Moreira Pinto
-
-Erick Fernandes De Farias Santos
+José Wendel Pereira Lima
 
 #
 
