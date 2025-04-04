@@ -57,7 +57,7 @@ Este projeto está licenciado sob a licença MIT. Veja o arquivo [LICENSE](LICEN
 Para mais informações, entre em contato:
 
 - **Nome:** José Roberto da Silva Henrique
-- **E-mail:** [seuemail@example.com](mailto:seuemail@example.com)
+- **E-mail:** [roberto.henrique@dcx.ufpb.br](roberto.henrique@dcx.ufpb.br)
 - **GitHub:** [robertoc4t](https://github.com/robertoc4t)
 
 #
